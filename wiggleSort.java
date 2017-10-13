@@ -1,3 +1,15 @@
+/*
+Problem- 
+Given an unsorted array nums, reorder it in-place such that nums[0] <= nums[1] >= nums[2] <= nums[3]....
+For example, given nums = [3, 5, 2, 1, 6, 4], one possible answer is [1, 6, 2, 5, 3, 4].
+
+Understand the problem:
+A[0] <= A[1] >= A[2] <= A[3] >= A[4] <= A[5]
+So we could actually observe that there is pattern that
+A[even] <= A[odd],
+A[odd] >= A[even].
+*/
+
 /* package whatever; // don't place package name! */
  
 import java.util.*;
