@@ -1,1 +1,1 @@
-This is my coding practice repository-- problems from Leetcodes
+This is my coding practice repository-- problems from Leetcode
