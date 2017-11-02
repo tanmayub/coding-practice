@@ -20,62 +20,64 @@ Output-
  0  -1   3   4
 */
 
-package com.example.tests;
+/* package whatever; // don't place package name! */
 
-/**
- * Created by TanmayPC on 11/2/2017.
- */
-public class WallsAndGates {
-    public static void main (String[] args) throws java.lang.Exception
-    {
-        // your code goes here
-        WallsAndGates i = new WallsAndGates();
-        int[][] arr = new int[][] {{Integer.MAX_VALUE,-1,0,Integer.MAX_VALUE},
-								   {Integer.MAX_VALUE,Integer.MAX_VALUE,Integer.MAX_VALUE,-1},
-								   {Integer.MAX_VALUE,-1,Integer.MAX_VALUE,-1},
-								   {0,-1,Integer.MAX_VALUE,Integer.MAX_VALUE}};
-        arr = i.wallsAndGates(arr);
+import java.util.*;
+import java.lang.*;
+import java.io.*;
 
-		//display result
-        for(int[] k : arr) {
-            for(int j : k)
-                System.out.print(j + " ");
-            System.out.println("");
-        }
-    }
-
-    public int[][] wallsAndGates(int[][] arr) {
-        int m = arr.length, n = arr[0].length;
-        boolean[][] visited = new boolean[m][n];
-
+/* Name of the class has to be "Main" only if the class is public. */
+class Ideone
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		// your code goes here
+		Ideone i = new Ideone();
+		int[][] arr = new int[][] {{Integer.MAX_VALUE,-1,0,Integer.MAX_VALUE}, 
+				   {Integer.MAX_VALUE,Integer.MAX_VALUE,Integer.MAX_VALUE,-1},
+				   {Integer.MAX_VALUE,-1,Integer.MAX_VALUE,-1},
+				   {0,-1,Integer.MAX_VALUE,Integer.MAX_VALUE}};
+		arr = i.wallsAndGates(arr);
+		
+		for(int[] k : arr) {
+			for(int j : k)
+				System.out.print(j + " ");
+			System.out.println("");
+		}
+	}
+	
+	public int[][] wallsAndGates(int[][] arr) {
+		int m = arr.length, n = arr[0].length;
+		boolean[][] visited = new boolean[m][n];
+		
 		//usual backtracking-- find 0(gate) and for each element not -1 surrounding the current, find and update distance
 		//if current dist in the cell is greter than dist
-        for(int i = 0; i < m; i++) {
-            for(int j = 0; j < n; j++) {
-                if(arr[i][j] == 0) //backtrack from each gate--calc dist to each non gate element
-                    backtrack(i, j, m, n, arr, 0, visited);
-            }
-        }
+		for(int i = 0; i < m; i++) {
+			for(int j = 0; j < n; j++) {
+			    if(arr[i][j] == 0) //backtrack from each gate--calc dist to each non gate element
+				backtrack(i, j, m, n, arr, 0, visited);
+			}
+		}
+		
+		return arr;
+	}
 
-        return arr;
-    }
-
-    public void backtrack(int i, int j, int m, int n, int[][] arr, int dist, boolean[][] visited) {
+	public void backtrack(int i, int j, int m, int n, int[][] arr, int dist, boolean[][] visited) {
 		//if i or j are not valid or arr[i][j] is a wall(-1) or ddist is gretaer than already updated dist at arr[i][j]
 		//return
-        if(i < 0 || j < 0 || i >= m || j >= n || arr[i][j] == -1 || visited[i][j] || dist > arr[i][j])
-            return;
-
+		if(i < 0 || j < 0 || i >= m || j >= n || arr[i][j] == -1 || visited[i][j] || dist > arr[i][j])
+			return;
+			
 		//mark visited true-- update dist and recur in 4 directions--after coming out of recursion
 		//mark not visited-- classic backtrack
-        visited[i][j] = true;
-        arr[i][j] = dist;
-
-        backtrack(i + 1, j, m, n, arr, dist + 1, visited);
-        backtrack(i - 1, j, m, n, arr, dist + 1, visited);
-        backtrack(i, j + 1, m, n, arr, dist + 1, visited);
-        backtrack(i, j - 1, m, n, arr, dist + 1, visited);
-
-        visited[i][j] = false;
-    }
+		visited[i][j] = true;
+		arr[i][j] = dist;
+		
+		backtrack(i + 1, j, m, n, arr, dist + 1, visited);
+		backtrack(i - 1, j, m, n, arr, dist + 1, visited);
+		backtrack(i, j + 1, m, n, arr, dist + 1, visited);
+		backtrack(i, j - 1, m, n, arr, dist + 1, visited);
+		
+		visited[i][j] = false;
+	}
 }
