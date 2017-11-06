@@ -31,7 +31,7 @@ class Ideone
 	public int read(char[] buf, int n) {
 		boolean eof = false;
 		int r = 0;
-		//where bytes get read and store after read4 returns
+		//where bytes are read and stored after read4 returns
 		//temp is not used in this code but it will be used in acutal one
 		char[] temp = new char[4];
 		//this will not be used in actual code
